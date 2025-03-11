@@ -1,7 +1,11 @@
-// script.js
 window.addEventListener('DOMContentLoaded', () => {
     // Récupération du canvas
     const canvas = document.getElementById("renderCanvas");
+
+    // Prévenir le défilement lors du zoom
+    canvas.addEventListener('wheel', (event) => {
+        event.preventDefault();
+    });
 
     // Initialisation du moteur BabylonJS
     const engine = new BABYLON.Engine(canvas, true);
@@ -12,7 +16,6 @@ window.addEventListener('DOMContentLoaded', () => {
         const scene = new BABYLON.Scene(engine);
 
         // Création d'une caméra ArcRotate (vue orbitale)
-        // Paramètres: (nom, alpha, beta, radius, target, scène)
         const camera = new BABYLON.ArcRotateCamera(
             "camera",
             -Math.PI / 2,  // angle horizontal
@@ -23,6 +26,14 @@ window.addEventListener('DOMContentLoaded', () => {
         );
         camera.attachControl(canvas, true);
 
+        // Limiter la distance de la caméra
+        camera.lowerRadiusLimit = 3; // Distance minimale de zoom
+        camera.upperRadiusLimit = 20; // Distance maximale de zoom
+
+        // Limiter l'angle vertical (éviter de voir sous la scène)
+        camera.lowerBetaLimit = Math.PI / 6; // Limite minimale de l'angle vertical
+        camera.upperBetaLimit = Math.PI / 1.5; // Limite maximale de l'angle vertical
+
         // Ajout d'une lumière hémisphérique
         const light = new BABYLON.HemisphericLight(
             "light",
@@ -32,20 +43,17 @@ window.addEventListener('DOMContentLoaded', () => {
         light.intensity = 0.8;
 
         // Import du modèle glTF depuis le dossier 'asset/model/foret/'
-        // 'scene.gltf' est le nom du fichier principal
         BABYLON.SceneLoader.ImportMesh(
             "",                       // nom du mesh à charger ("" = tous)
-            "asset/model/foret/",     // chemin vers le dossier contenant votre modèle
+            "asset/model/pine_forest/",     // chemin vers le dossier contenant votre modèle
             "scene.gltf",             // nom du fichier glTF
             scene,
             function (meshes) {
                 console.log("Modèle chargé :", meshes);
 
-                // Ajustements optionnels sur les maillages importés
                 meshes.forEach((mesh) => {
                     // Exemple : si le modèle est trop grand, on peut le réduire
-                    mesh.scaling = new BABYLON.Vector3(1,1,1);
-                    // Position au centre de la scène
+                    mesh.scaling = new BABYLON.Vector3(1, 1, 1);
                     mesh.position = BABYLON.Vector3.Zero();
                 });
             },
