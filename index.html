@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Découvrir les Champignons</title>
+
+    <!-- Feuille de style principale -->
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- En-tête du site -->
+<header>
+    <nav>
+        <a href="#accueil">Accueil</a>
+        <a href="#info-champignons">Apprendre</a>
+        <a href="#modele3D">Modèle 3D</a>
+    </nav>
+</header>
+
+<!-- Contenu principal -->
+<main id="accueil">
+    <!-- Section de présentation (hero) -->
+    <section class="hero">
+        <h1>Découvrir les Champignons</h1>
+        <p>
+            Bienvenue sur notre site dédié à l’apprentissage des champignons. Découvrez comment les reconnaître,
+            savoir s’ils sont comestibles ou toxiques, et explorez un modèle 3D pour mieux comprendre leur anatomie.
+        </p>
+        <button class="btn-primary">Commencer</button>
+    </section>
+
+    <!-- Section d’informations textuelles -->
+    <section id="info-champignons">
+        <h2>Pourquoi apprendre à reconnaître les champignons ?</h2>
+        <p>
+            Les champignons sont fascinants par leur diversité et leurs propriétés culinaires ou médicinales.
+            Toutefois, certaines espèces sont très toxiques. Sur ce site, nous vous présentons différentes variétés,
+            des astuces pour les identifier, et des précautions à prendre lors de la cueillette.
+        </p>
+        <h3>Comestibles ou Toxiques ?</h3>
+        <p>
+            Chaque champignon possède ses caractéristiques : forme, couleur, odeur, habitat.
+            Nous vous proposons des fiches détaillées pour éviter les confusions les plus courantes
+            et prévenir les risques d’intoxication.
+        </p>
+    </section>
+
+    <!-- Section contenant le canvas BabylonJS -->
+    <section id="modele3D">
+        <h2>Explorez un champignon en 3D</h2>
+        <canvas id="renderCanvas"></canvas>
+        <!--
+          Le rendu 3D apparaîtra ici grâce à BabylonJS et script.js.
+          Assurez-vous de configurer votre script.js pour importer votre modèle .gltf ou .glb
+          et de placer correctement le canvas avec l’ID "renderCanvas".
+        -->
+    </section>
+</main>
+
+<!-- Pied de page -->
+<footer>
+    <p>&copy; 2025 - Site d’apprentissage des champignons</p>
+</footer>
+
+<!-- Bibliothèques BabylonJS -->
+<script src="https://cdn.babylonjs.com/babylon.js"></script>
+<script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+
+<!-- Votre script personnalisé -->
+<script src="script.js"></script>
+</body>
+</html>

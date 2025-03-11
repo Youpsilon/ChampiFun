@@ -1,0 +1,168 @@
+
+/* style.css */
+
+/* Réinitialisation de base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Style global du body */
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #e9f3e9; /* Vert très pâle, ambiance nature */
+    color: #333;
+    line-height: 1.6;
+    overflow-x: hidden; /* Empêche le débordement horizontal */
+}
+
+/* ---------------------- */
+/* Header et Navigation   */
+/* ---------------------- */
+header {
+    background-color: #2e4d2e; /* Vert forêt profond */
+    padding: 1rem;
+}
+
+header nav {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+header nav a {
+    color: #cfe9c3; /* Vert clair */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+header nav a:hover {
+    color: #ffffff;
+}
+
+/* ---------------------- */
+/* Section Hero           */
+/* ---------------------- */
+.hero {
+    position: relative;
+    padding: 4rem 1rem;
+    text-align: center;
+    background: url('forest-background.jpg') no-repeat center center/cover;
+    color: #ffffff;
+}
+
+/* Ajout d'une superposition pour assombrir le background */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.hero > * {
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero p {
+    max-width: 700px;
+    margin: 0 auto 2rem auto;
+    font-size: 1.2rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.btn-primary {
+    padding: 0.75rem 1.5rem;
+    background-color: #3b8c3b; /* Vert moyen */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #2e6f2e;
+}
+
+/* ---------------------- */
+/* Sections d'information */
+/* ---------------------- */
+main section {
+    padding: 3rem 1rem;
+}
+
+#info-champignons {
+    background-color: #f4f9f4; /* Vert très clair */
+    margin: 2rem auto;
+    max-width: 800px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+}
+
+#info-champignons h2,
+#info-champignons h3 {
+    margin-bottom: 1rem;
+    color: #2e4d2e;
+}
+
+#info-champignons p {
+    margin-bottom: 1.5rem;
+}
+
+/* ---------------------- */
+/* Section Modèle 3D       */
+/* ---------------------- */
+#modele3D {
+    text-align: center;
+}
+
+#modele3D h2 {
+    margin-bottom: 1rem;
+    color: #2e4d2e;
+}
+
+#renderCanvas {
+    width: 90%;
+    max-width: 1000px;
+    height: 500px;
+    margin: 0 auto;
+    border: 2px solid #2e4d2e;
+    display: block;
+}
+
+/* ---------------------- */
+/* Footer                 */
+/* ---------------------- */
+footer {
+    background-color: #2e4d2e;
+    color: #cfe9c3;
+    text-align: center;
+    padding: 1rem;
+}
+
+/* ---------------------- */
+/* Responsive             */
+/* ---------------------- */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    .hero p {
+        font-size: 1rem;
+    }
+}
