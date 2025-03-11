@@ -29,7 +29,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
         // Limiter la distance de la caméra
         camera.lowerRadiusLimit = 3; // Distance minimale de zoom
-        camera.upperRadiusLimit = 20; // Distance maximale de zoom
+        camera.upperRadiusLimit = 500; // Distance maximale de zoom
 
         // Limiter l'angle vertical (éviter de voir sous la scène)
         camera.lowerBetaLimit = Math.PI / 6; // Limite minimale de l'angle vertical
@@ -42,6 +42,26 @@ window.addEventListener('DOMContentLoaded', () => {
             scene
         );
         light.intensity = 0.8;
+
+        // Chargement de la forêt depuis le dossier 'pine_forest'
+        BABYLON.SceneLoader.ImportMesh(
+            "",                       // importer tous les meshes
+            "asset/model/pine_forest/",     // chemin vers le dossier contenant votre modèle de forêt
+            "scene.gltf",             // nom du fichier glTF de la forêt
+            scene,
+            function (meshes) {
+                console.log("Forêt chargée :", meshes);
+                // Ajuster la forêt (position, scaling, etc.) si nécessaire
+                meshes.forEach(mesh => {
+                    // Exemple : centrer la forêt
+                    mesh.position = new BABYLON.Vector3(0, 0, 0);
+                });
+            },
+            null,
+            function (scene, message, exception) {
+                console.error("Erreur lors du chargement de la forêt :", message, exception);
+            }
+        );
 
         // Fonction utilitaire pour dupliquer un champignon avec des propriétés personnalisées
         function duplicateMushroom(sourceMesh, { name, position, rotation, scaling } = {}) {
@@ -59,10 +79,10 @@ window.addEventListener('DOMContentLoaded', () => {
         // Variable pour stocker les templates des champignons (initialement cachés)
         let mushroomTemplates = [];
 
-        // Chargement du modèle glTF
+        // Chargement du modèle glTF pour les champignons
         BABYLON.SceneLoader.ImportMesh(
             "",                       // nom du mesh à charger ("" = tous)
-            "asset/model/champi/",    // chemin vers le dossier contenant votre modèle
+            "asset/model/champi/",     // chemin vers le dossier contenant votre modèle
             "scene.gltf",             // nom du fichier glTF
             scene,
             function (meshes) {
@@ -113,7 +133,7 @@ window.addEventListener('DOMContentLoaded', () => {
             },
             null,
             function (scene, message, exception) {
-                console.error("Erreur lors du chargement :", message, exception);
+                console.error("Erreur lors du chargement des champignons :", message, exception);
             }
         );
 
@@ -133,4 +153,3 @@ window.addEventListener('DOMContentLoaded', () => {
         engine.resize();
     });
 });
-//test
