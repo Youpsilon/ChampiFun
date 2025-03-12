@@ -29,7 +29,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
         // Limiter la distance de la caméra (zoom)
         camera.lowerRadiusLimit = 3;
-        camera.upperRadiusLimit = 20;
+        camera.upperRadiusLimit = 2000;
 
         // Limiter l'angle vertical (éviter de passer sous la scène)
         camera.lowerBetaLimit = Math.PI / 6;
@@ -111,11 +111,112 @@ window.addEventListener('DOMContentLoaded', () => {
 
         // Exemple 1 : Agaric Impudique
         loadMushroom("agaric-impudique.glb", {
-            name: "AgaricImpudique",
+            name: "agaricimpudique",
             position: new BABYLON.Vector3(0, 0, 0),
             rotation: new BABYLON.Vector3(-3* Math.PI / 6, 0, 0),
             scaling: new BABYLON.Vector3(5, 5, 5)
         });
+
+        loadMushroom("amadouvier.glb", {
+            name: "amadouvier",
+            position: new BABYLON.Vector3(0, 0, 1),
+            rotation: new BABYLON.Vector3(-3* Math.PI / 6, 0, 0),
+            scaling: new BABYLON.Vector3(5, 5, 5)
+        });
+
+        loadMushroom("amanite.glb", {
+            name: "amanite",
+            position: new BABYLON.Vector3(1, 0, 1),
+            rotation: new BABYLON.Vector3(-3* Math.PI / 6, 0, 0),
+            scaling: new BABYLON.Vector3(5, 5, 5)
+        });
+
+        loadMushroom("amanite-cesar.glb", {
+            name: "amanitecesar",
+            position: new BABYLON.Vector3(2, 0, 1),
+            rotation: new BABYLON.Vector3(-3* Math.PI / 6, 0, 0),
+            scaling: new BABYLON.Vector3(5, 5, 5)
+        });
+
+        loadMushroom("bolet-bai.glb", {
+            name: "boletbai",
+            position: new BABYLON.Vector3(2, 0, 2),
+            rotation: new BABYLON.Vector3(-3* Math.PI / 6, 0, 0),
+            scaling: new BABYLON.Vector3(5, 5, 5)
+        });
+
+        loadMushroom("bolet-chair-jaune.glb", {
+            name: "boletchairjaune",
+            position: new BABYLON.Vector3(-1, 0, 0),
+            rotation: new BABYLON.Vector3(3, 0, 0),
+            scaling: new BABYLON.Vector3(-0.1, -0.1, -0.1)
+        });
+
+        loadMushroom("cepe.glb", {
+            name: "cepe",
+            position: new BABYLON.Vector3(-1, 0, -1),
+            rotation: new BABYLON.Vector3(-3* Math.PI / 6, 0, 0),
+            scaling: new BABYLON.Vector3(5, 5, 5)
+        });
+
+        loadMushroom("cepe-2.glb", {
+            name: "cepe2",
+            position: new BABYLON.Vector3(0, 0, -1),
+            rotation: new BABYLON.Vector3(-3* Math.PI / 6, 0, 0),
+            scaling: new BABYLON.Vector3(5, 5, 5)
+        });
+
+        loadMushroom("champignon-a-lames.glb", {
+            name: "champignonalames",
+            position: new BABYLON.Vector3(-2, 0, -1),
+            rotation: new BABYLON.Vector3(-3* Math.PI / 6, 0, 0),
+            scaling: new BABYLON.Vector3(5, 5, 5)
+        });
+
+        loadMushroom("champignon-de-parie.glb", {
+            name: "champignondeparie",
+            position: new BABYLON.Vector3(-2, 0, -2),
+            rotation: new BABYLON.Vector3(-3* Math.PI / 6, 0, 0),
+            scaling: new BABYLON.Vector3(5, 5, 5)
+        });
+
+        loadMushroom("dedale-de-chene.glb", {
+            name: "dedaleduchene",
+            position: new BABYLON.Vector3(-2, 0, 0),
+            rotation: new BABYLON.Vector3(-3* Math.PI / 6, 0, 0),
+            scaling: new BABYLON.Vector3(5, 5, 5)
+        });
+
+        loadMushroom("lapiote-deguenille.glb", {
+            name: "lapiotedeguenille",
+            position: new BABYLON.Vector3(0, 0, -2),
+            rotation: new BABYLON.Vector3(-3* Math.PI / 6, 0, 0),
+            scaling: new BABYLON.Vector3(5, 5, 5)
+        });
+
+        loadMushroom("panus-en-eventail.glb", {
+            name: "panuseneventail",
+            position: new BABYLON.Vector3(1, 0, 2),
+            rotation: new BABYLON.Vector3(-3* Math.PI / 6, 0, 0),
+            scaling: new BABYLON.Vector3(5, 5, 5)
+        });
+
+        loadMushroom("portobello.glb", {
+            name: "portobello",
+            position: new BABYLON.Vector3(0, 0, 2),
+            rotation: new BABYLON.Vector3(-3* Math.PI / 6, 0, 0),
+            scaling: new BABYLON.Vector3(5, 5, 5)
+        });
+
+        loadMushroom("trompette-de-la-mort.glb", {
+            name: "trompettedelamort",
+            position: new BABYLON.Vector3(2, 0, 0),
+            rotation: new BABYLON.Vector3(-3* Math.PI / 6, 0, 0),
+            scaling: new BABYLON.Vector3(5, 5, 5)
+        });
+
+
+
 
 
         // Ajoutez ici d'autres appels loadMushroom pour chacun de vos fichiers.
