@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Découvrir les Champignons</title>
-
     <!-- Feuille de style principale -->
     <link rel="stylesheet" href="style.css" />
 </head>
@@ -51,11 +50,8 @@
     <section id="modele3D">
         <h2>Explorez un champignon en 3D</h2>
         <canvas id="renderCanvas"></canvas>
-        <!--
-          Le rendu 3D apparaîtra ici grâce à BabylonJS et script.js.
-          Assurez-vous de configurer votre script.js pour importer votre modèle .gltf ou .glb
-          et de placer correctement le canvas avec l’ID "renderCanvas".
-        -->
+        <!-- Zone d'affichage des infos du champignon (affichée lors du clic) -->
+        <div id="mushroomInfo"></div>
     </section>
 </main>
 
@@ -67,7 +63,6 @@
 <!-- Bibliothèques BabylonJS -->
 <script src="https://cdn.babylonjs.com/babylon.js"></script>
 <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
-
 <!-- Votre script personnalisé -->
 <script src="script.js"></script>
 </body>
