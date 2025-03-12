@@ -3,7 +3,7 @@ window.addEventListener('DOMContentLoaded', () => {
     // Récupération du canvas
     const canvas = document.getElementById("renderCanvas");
 
-    // Empêcher le scroll sur le canvas (pour le zoom BabylonJS uniquement)
+    // Empêcher le scroll sur le canvas (zoom BabylonJS uniquement)
     canvas.addEventListener('wheel', (event) => {
         event.preventDefault();
     }, { passive: false });
@@ -13,23 +13,66 @@ window.addEventListener('DOMContentLoaded', () => {
     let scene;
 
     // Fonction de création de la scène
-    function createScene() {
-        scene = new BABYLON.Scene(engine);
+    const createScene = () => {
+        // Création d'une scène
+        const scene = new BABYLON.Scene(engine);
 
-        // Caméra ArcRotate (vue orbitale)
-        const camera = new BABYLON.ArcRotateCamera(
+        // Création d'une caméra ArcRotate (vue orbitale)
+        // const camera = new BABYLON.ArcRotateCamera(
+        //     "camera",
+        //     -Math.PI / 2,   // angle horizontal
+        //     Math.PI / 2.5,  // angle vertical
+        //     5,              // distance du centre
+        //     BABYLON.Vector3.Zero(),
+        //     scene
+        // );
+        // camera.attachControl(canvas, true);
+        //
+        // // Limiter la distance de la caméra (zoom)
+        // camera.lowerRadiusLimit = 3;
+        // camera.upperRadiusLimit = 20;
+        //
+        // // Limiter l'angle vertical (éviter de passer sous la scène)
+        // camera.lowerBetaLimit = Math.PI / 6 - 0.3;
+        // camera.upperBetaLimit = Math.PI / 1.5 - 0.7;
+        //
+        // camera.wheelPrecision = 50;
+
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        const camera = new BABYLON.UniversalCamera(
             "camera",
-            -Math.PI / 2,   // angle horizontal
-            Math.PI / 2.5,  // angle vertical
-            5,              // distance initiale
-            BABYLON.Vector3.Zero(),
+            new BABYLON.Vector3(0, 1, -5), // Position de départ
             scene
         );
         camera.attachControl(canvas, true);
-        camera.lowerRadiusLimit = 3;
-        camera.upperRadiusLimit = 500; // on peut zoomer loin
-        camera.lowerBetaLimit = Math.PI / 6;
-        camera.upperBetaLimit = Math.PI / 1.5;
+
+// Paramètres pour un mouvement plus fluide
+        camera.speed = 0.2; // Réduit la vitesse du déplacement
+        camera.angularSensibility = 5000; // Réduit la sensibilité de la souris
+
+// Active les touches pour se déplacer (ZQSD ou WASD)
+        camera.keysUp = [90]; // Z (AZERTY) ou W (QWERTY)
+        camera.keysDown = [83]; // S
+        camera.keysLeft = [81]; // Q (AZERTY) ou A (QWERTY)
+        camera.keysRight = [68]; // D
+
+        scene.onKeyboardObservable.add((kbInfo) => {
+            switch (kbInfo.type) {
+                case BABYLON.KeyboardEventTypes.KEYDOWN:
+                    if (kbInfo.event.key === "e") {
+                        camera.position.y += 0.2; // Monter
+                    } else if (kbInfo.event.key === "a") {
+                        camera.position.y -= 0.2; // Descendre
+                    }
+                    break;
+            }
+        });
+
+        camera.minZ = 0.1
+
+        /////////////////////////////////////////////////////////////////////////////////////////////
 
         // Lumière hémisphérique
         const light = new BABYLON.HemisphericLight(
@@ -138,13 +181,127 @@ window.addEventListener('DOMContentLoaded', () => {
             );
         }
 
-        // Charger le champignon "AgaricImpudique" avec survol + clic
-        loadMushroom("portobello.glb", {
-            name: "AgaricImpudique",
-            position: new BABYLON.Vector3(0, 0, 0),
-            rotation: new BABYLON.Vector3(-3 * Math.PI / 6, 0, 0),
+        // --- Exemple d'utilisation : charger tous les champignons avec rotation et scale personnalisés ---
+
+        // Exemple 1 : Agaric Impudique
+        loadMushroom("agaric-impudique.glb", {
+            name: "agaricimpudique",
+            position: new BABYLON.Vector3(0, -0.35, 0),
+            rotation: new BABYLON.Vector3(-3* Math.PI / 6, 0, 0),
             scaling: new BABYLON.Vector3(5, 5, 5)
         });
+
+        loadMushroom("amadouvier.glb", {
+            name: "amadouvier",
+            position: new BABYLON.Vector3(-0.2, 1.5, -6.4),
+            rotation: new BABYLON.Vector3(-3* Math.PI / 6, 0, 0),
+            scaling: new BABYLON.Vector3(4, 4, 4)
+        });
+
+        loadMushroom("amadouvier.glb", {
+            name: "amadouvier2",
+            position: new BABYLON.Vector3(-0.33, 1.4, -6.5),
+            rotation: new BABYLON.Vector3(-3* Math.PI / 6, -1.25, 0),
+            scaling: new BABYLON.Vector3(3, 3, 3)
+        });
+
+
+        loadMushroom("amanite.glb", {
+            name: "amanite",
+            position: new BABYLON.Vector3(1, 0, 1),
+            rotation: new BABYLON.Vector3(-3* Math.PI / 6, 0, 0),
+            scaling: new BABYLON.Vector3(5, 5, 5)
+        });
+
+        loadMushroom("amanite-cesar.glb", {
+            name: "amanitecesar",
+            position: new BABYLON.Vector3(2, 0, 1),
+            rotation: new BABYLON.Vector3(-3* Math.PI / 6, 0, 0),
+            scaling: new BABYLON.Vector3(5, 5, 5)
+        });
+
+        loadMushroom("bolet-bai.glb", {
+            name: "boletbai",
+            position: new BABYLON.Vector3(2, 0, 2),
+            rotation: new BABYLON.Vector3(-3* Math.PI / 6, 0, 0),
+            scaling: new BABYLON.Vector3(5, 5, 5)
+        });
+
+        loadMushroom("bolet-chair-jaune.glb", {
+            name: "boletchairjaune",
+            position: new BABYLON.Vector3(-1, 0, 0),
+            rotation: new BABYLON.Vector3(3, 0, 0),
+            scaling: new BABYLON.Vector3(-0.1, -0.1, -0.1)
+        });
+
+        loadMushroom("cepe.glb", {
+            name: "cepe",
+            position: new BABYLON.Vector3(-1, 0, -1),
+            rotation: new BABYLON.Vector3(-3* Math.PI / 6, 0, 0),
+            scaling: new BABYLON.Vector3(5, 5, 5)
+        });
+
+        loadMushroom("cepe-2.glb", {
+            name: "cepe2",
+            position: new BABYLON.Vector3(0, 0, -1),
+            rotation: new BABYLON.Vector3(-3* Math.PI / 6, 0, 0),
+            scaling: new BABYLON.Vector3(5, 5, 5)
+        });
+
+        loadMushroom("champignon-a-lames.glb", {
+            name: "champignonalames",
+            position: new BABYLON.Vector3(-2, 0, -1),
+            rotation: new BABYLON.Vector3(-3* Math.PI / 6, 0, 0),
+            scaling: new BABYLON.Vector3(5, 5, 5)
+        });
+
+        loadMushroom("champignon-de-parie.glb", {
+            name: "champignondeparie",
+            position: new BABYLON.Vector3(-2, 0, -2),
+            rotation: new BABYLON.Vector3(-3* Math.PI / 6, 0, 0),
+            scaling: new BABYLON.Vector3(5, 5, 5)
+        });
+
+        loadMushroom("dedale-du-chene.glb", {
+            name: "dedaleduchene",
+            position: new BABYLON.Vector3(-2, 0, 0),
+            rotation: new BABYLON.Vector3(-3* Math.PI / 6, 0, 0),
+            scaling: new BABYLON.Vector3(5, 5, 5)
+        });
+
+        loadMushroom("lapiote-deguenille.glb", {
+            name: "lapiotedeguenille",
+            position: new BABYLON.Vector3(0, 0, -2),
+            rotation: new BABYLON.Vector3(-3* Math.PI / 6, 0, 0),
+            scaling: new BABYLON.Vector3(5, 5, 5)
+        });
+
+        loadMushroom("panus-en-enventail.glb", {
+            name: "panusenenventail",
+            position: new BABYLON.Vector3(1, 0, 2),
+            rotation: new BABYLON.Vector3(-3* Math.PI / 6, 0, 0),
+            scaling: new BABYLON.Vector3(5, 5, 5)
+        });
+
+        loadMushroom("portobello.glb", {
+            name: "portobello",
+            position: new BABYLON.Vector3(0, 0, 2),
+            rotation: new BABYLON.Vector3(-3* Math.PI / 6, 0, 0),
+            scaling: new BABYLON.Vector3(5, 5, 5)
+        });
+
+        loadMushroom("trompette-de-la-mort.glb", {
+            name: "trompettedelamort",
+            position: new BABYLON.Vector3(2, 0, 0),
+            rotation: new BABYLON.Vector3(-3* Math.PI / 6, 0, 0),
+            scaling: new BABYLON.Vector3(5, 5, 5)
+        });
+
+
+
+
+
+        // Ajoutez ici d'autres appels loadMushroom pour chacun de vos fichiers.
 
         return scene;
     }
