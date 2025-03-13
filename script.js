@@ -6,7 +6,7 @@ window.addEventListener('DOMContentLoaded', () => {
     // Données pour chaque type de champignon
     // Données pour chaque type de champignon
     const mushroomData = {
-        "agaricimpudique": {
+        "Agaric impudique": {
             edible: false,
             photo: "asset/images/agaric.jpg", // Assurez-vous que le chemin et le nom du fichier sont corrects
             shortDescription: "Un champignon au chapeau grisâtre, parfois méconnu et non comestible.",
@@ -41,7 +41,7 @@ window.addEventListener('DOMContentLoaded', () => {
             edibleTooltip: "Non comestible"
         }
         ,
-        "amadouvier": {
+        "Amadouvier": {
             edible: true,
             photo: "asset/images/amadouvier.jpg",
             shortDescription: "Champignon brun, souvent apprécié pour son goût délicat.",
@@ -70,7 +70,7 @@ window.addEventListener('DOMContentLoaded', () => {
             edibleTooltip: "Comestible"
         },
 
-        "amanite": {
+        "Amanite tue-mouche": {
             edible: false,
             photo: "asset/images/amanite.jpg", // Assurez-vous que ce chemin correspond à votre image
             shortDescription: "Le champignon rouge à pois blancs, emblématique mais toxique.",
@@ -104,7 +104,7 @@ window.addEventListener('DOMContentLoaded', () => {
             edibleTooltip: "Non comestible"
         },
 
-        "boletbai": {
+        "Bolet bai": {
             edible: true,
             photo: "asset/images/bolet-bai.jpg", // Vérifiez le chemin et le nom du fichier image
             shortDescription: "Un bolet robuste au chapeau brun et aux pores dorés, apprécié pour sa saveur délicate.",
@@ -132,7 +132,7 @@ window.addEventListener('DOMContentLoaded', () => {
             edibleIcon: "fa-solid fa-circle-check",  // Icône Font Awesome pour "comestible"
             edibleTooltip: "Comestible"
         },
-        "boletchairjaune": {
+        "Bolet à chair jaune": {
             edible: false,
             photo: "asset/images/bolet-a-chair-jaune.jpg", // Vérifiez le chemin et le nom du fichier image
             shortDescription: "Un bolet à chair jaune vif, remarquable par sa couleur et sa texture unique.",
@@ -161,7 +161,7 @@ window.addEventListener('DOMContentLoaded', () => {
             edibleTooltip: "Non comestible"
         },
 
-        "cepe": {
+        "Cèpe": {
             edible: true,
             photo: "asset/images/cepe.jpg", // Vérifiez que l'image existe à ce chemin
             shortDescription: "Le cépe, champignon raffiné aux saveurs intenses.",
@@ -188,7 +188,7 @@ window.addEventListener('DOMContentLoaded', () => {
             edibleIcon: "fa-solid fa-circle-check", // Icône Font Awesome pour comestible
             edibleTooltip: "Comestible"
         },
-        "amanitecesar": {
+        "Amanite césar": {
             edible: true,
             photo: "asset/images/amanite-cesar.jpg", // Vérifiez que l'image est bien placée à ce chemin
             shortDescription: "L’Amanite César, un champignon royal et savoureux.",
@@ -218,7 +218,7 @@ window.addEventListener('DOMContentLoaded', () => {
         },
 
 
-        "champignondeparie": {
+        "Champignon de Paris": {
             edible: true,
             photo: "asset/images/champignon-paris.jpg",
             shortDescription: "Le champignon de Paris, classique et délicat, cultivé en cave.",
@@ -244,7 +244,7 @@ window.addEventListener('DOMContentLoaded', () => {
             edibleIcon: "fa-solid fa-circle-check",
             edibleTooltip: "Comestible"
         },
-        "dedaleduchene": {
+        "Dédale du chêne": {
             edible: true,
             photo: "asset/images/dedale.png",
             shortDescription: "Un champignon de chêne au goût subtil et texture raffinée.",
@@ -270,13 +270,13 @@ window.addEventListener('DOMContentLoaded', () => {
             edibleIcon: "fa-solid fa-circle-check",
             edibleTooltip: "Comestible"
         },
-        "lapiotedeguenille": {
+        "Lépiote déguenillée": {
             edible: false,
             photo: "asset/images/lapiote.jpg",
             shortDescription: "Un champignon rare au chapeau délicat et à la texture fine.",
             longText: `
       <p>
-        La lapiote de deguenille est un petit champignon au chapeau pâle et fragile, reconnu pour sa finesse.
+        La lépiote de deguenille est un petit champignon au chapeau pâle et fragile, reconnu pour sa finesse.
         Elle pousse dans des milieux humides et ombragés, et bien que son apparence soit raffinée, 
         elle n'est généralement pas consommée en raison de son goût neutre et de sa faible densité.
       </p>
@@ -296,7 +296,7 @@ window.addEventListener('DOMContentLoaded', () => {
             edibleIcon: "fa-solid fa-circle-xmark",
             edibleTooltip: "Non comestible"
         },
-        "panusenenventail": {
+        "Panus en éventail": {
             edible: true,
             photo: "asset/images/panus.jpg",
             shortDescription: "Un champignon en éventail, délicat et savoureux.",
@@ -322,7 +322,7 @@ window.addEventListener('DOMContentLoaded', () => {
             edibleIcon: "fa-solid fa-circle-check",
             edibleTooltip: "Comestible"
         },
-        "trompettedelamort": {
+        "Trompette de la mort": {
             edible: true,
             photo: "asset/images/trompette.jpg",
             shortDescription: "Un champignon sombre et mystérieux, très prisé en gastronomie.",
@@ -348,7 +348,7 @@ window.addEventListener('DOMContentLoaded', () => {
             edibleIcon: "fa-solid fa-circle-check",
             edibleTooltip: "Comestible"
         },
-        "portobello": {
+        "Portobello": {
             edible: true,
             photo: "asset/images/portobello.jpg",
             shortDescription: "Un grand champignon charnu, parfait pour la cuisine végétarienne.",
@@ -374,8 +374,6 @@ window.addEventListener('DOMContentLoaded', () => {
             edibleIcon: "fa-solid fa-circle-check",
             edibleTooltip: "Comestible"
         }
-
-        // ...etc.
     };
 
 
@@ -500,7 +498,7 @@ window.addEventListener('DOMContentLoaded', () => {
             infoDiv.style.display = "block";
 
             // On utilise le nom en minuscule pour accéder aux données
-            const data = mushroomData[mushroomName.toLowerCase()] || {};
+            const data = mushroomData[mushroomName] || {};
 
             // Exemples de textes plus longs (vous pouvez ajuster chaque champignonData)
             const defaultLongText = `
@@ -883,14 +881,14 @@ window.addEventListener('DOMContentLoaded', () => {
         // Lapiote déguenillée -----------------------------------------------------------------------------------------
 
         loadMushroom("lapiote-deguenille.glb", {
-            name: "Lapiote déguenillée",
+            name: "Lépiote déguenillée",
             position: new BABYLON.Vector3(5.0640847861898814, 0.65, 6.697748037888171),
             rotation: new BABYLON.Vector3(-3* Math.PI / 6, 0, 0),
             scaling: new BABYLON.Vector3(5, 5, 5)
         });
 
         loadMushroom("lapiote-deguenille.glb", {
-            name: "Lapiote déguenillée",
+            name: "Lépiote déguenillée",
             position: new BABYLON.Vector3(5.229916417828624, 0.67, 6.740865478058817),
             rotation: new BABYLON.Vector3(-3* Math.PI / 6, 2, 0),
             scaling: new BABYLON.Vector3(4, 4, 4)
