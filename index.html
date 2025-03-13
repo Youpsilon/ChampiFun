@@ -3,67 +3,81 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Découvrir les Champignons</title>
+    <title>Balade en Forêt des Champignons</title>
     <!-- Feuille de style principale -->
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
 <!-- En-tête du site -->
 <header>
-    <nav>
-        <a href="#accueil">Accueil</a>
-        <a href="#info-champignons">Apprendre</a>
-        <a href="#modele3D">Modèle 3D</a>
-    </nav>
 </header>
 
 <!-- Contenu principal -->
 <main id="accueil">
     <!-- Section de présentation (hero) -->
     <section class="hero">
-        <h1>Découvrir les Champignons</h1>
+        <h1>Bienvenue à la Balade Champi</h1>
         <p>
-            Bienvenue sur notre site dédié à l’apprentissage des champignons. Découvrez comment les reconnaître,
-            savoir s’ils sont comestibles ou toxiques, et explorez un modèle 3D pour mieux comprendre leur anatomie.
+            Viens explorer la forêt enchantée où se cachent plein de champignons étonnants !
+            Découvre leurs secrets et apprends à les reconnaître en t'amusant.
         </p>
-        <button class="btn-primary">Commencer</button>
     </section>
+
 
     <!-- Section d’informations textuelles -->
     <section id="info-champignons">
-        <h2>Pourquoi apprendre à reconnaître les champignons ?</h2>
+        <h2>Pourquoi explorer la forêt des champignons ?</h2>
         <p>
-            Les champignons sont fascinants par leur diversité et leurs propriétés culinaires ou médicinales.
-            Toutefois, certaines espèces sont très toxiques. Sur ce site, nous vous présentons différentes variétés,
-            des astuces pour les identifier, et des précautions à prendre lors de la cueillette.
+            Les champignons sont comme de petits trésors cachés dans la nature.
+            Certains sont délicieux, d'autres, à éviter. Ici, tu pourras apprendre à les identifier,
+            à comprendre leurs mystères et à profiter d'une aventure ludique en famille !
         </p>
-        <h3>Comestibles ou Toxiques ?</h3>
+        <h3>Un monde fascinant à découvrir</h3>
         <p>
-            Chaque champignon possède ses caractéristiques : forme, couleur, odeur, habitat.
-            Nous vous proposons des fiches détaillées pour éviter les confusions les plus courantes
-            et prévenir les risques d’intoxication.
+            Chaque champignon a sa propre histoire. Viens découvrir les secrets de la forêt et deviens un expert des champignons !
         </p>
     </section>
 
-    <!-- Section contenant le canvas BabylonJS -->
+    <!-- Section de consignes superposées au canvas -->
     <section id="modele3D">
-        <h2>Explorez un champignon en 3D</h2>
-        <canvas id="renderCanvas"></canvas>
-        <!-- Zone d'affichage des infos du champignon (affichée lors du clic) -->
+        <h2>Explore la Forêt</h2>
+        <div id="canvasContainer">
+            <canvas id="renderCanvas"></canvas>
+            <div id="instructions">
+                <h1>Prêt pour l'aventure ?</h1>
+                <p>
+                    Utilise ta souris pour te déplacer dans la forêt virtuelle et découvrir les champignons.
+                    Clique sur un champignon pour en savoir plus sur lui.
+                </p>
+                <button id="startButton">Je suis pret !</button>
+            </div>
+        </div>
+        <!-- Zone d'affichage des infos du champignon -->
         <div id="mushroomInfo"></div>
     </section>
+
+
 </main>
 
 <!-- Pied de page -->
 <footer>
-    <p>&copy; 2025 - Site d’apprentissage des champignons</p>
+    <p>&copy; 2025 - Balade Champi</p>
 </footer>
 
 <!-- Bibliothèques BabylonJS -->
 <script src="https://cdn.babylonjs.com/babylon.js"></script>
 <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+
+
 <!-- Votre script personnalisé -->
 <script src="script.js"></script>
+<script>
+    // JS pour masquer l'overlay des consignes au clic sur le bouton
+    document.getElementById("startButton").addEventListener("click", function() {
+        document.getElementById("instructions").style.display = "none";
+    });
+</script>
 </body>
 </html>

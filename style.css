@@ -1,4 +1,3 @@
-
 /* style.css */
 
 /* Réinitialisation de base */
@@ -49,10 +48,10 @@ header nav a:hover {
     position: relative;
     padding: 4rem 1rem;
     text-align: center;
+    background: #e8f5e9;
     color: #ffffff;
 }
 
-/* Ajout d'une superposition pour assombrir le background */
 .hero::before {
     content: "";
     position: absolute;
@@ -73,18 +72,20 @@ header nav a:hover {
     font-size: 3rem;
     margin-bottom: 1rem;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    color: #2a7f62;
 }
 
 .hero p {
     max-width: 700px;
-    margin: 0 auto 2rem auto;
+    margin: 0 auto 2rem;
     font-size: 1.2rem;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    color: #333;
 }
 
 .btn-primary {
     padding: 0.75rem 1.5rem;
-    background-color: #3b8c3b; /* Vert moyen */
+    background-color: #3b8c3b;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -102,12 +103,13 @@ header nav a:hover {
 /* ---------------------- */
 main section {
     padding: 3rem 1rem;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
 #info-champignons {
-    background-color: #f4f9f4; /* Vert très clair */
+    background-color: #f4f9f4;
     margin: 2rem auto;
-    max-width: 800px;
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     padding: 2rem;
@@ -124,24 +126,148 @@ main section {
 }
 
 /* ---------------------- */
-/* Section Modèle 3D       */
+/* Section Modèle 3D et Canvas */
 /* ---------------------- */
 #modele3D {
     text-align: center;
 }
 
-#modele3D h2 {
-    margin-bottom: 1rem;
-    color: #2e4d2e;
+#canvasContainer {
+    position: relative;
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+    border: 2px solid #2e4d2e;
+    height: 500px;
 }
 
 #renderCanvas {
-    width: 90%;
-    max-width: 1000px;
-    height: 500px;
-    margin: 0 auto;
-    border: 2px solid #2e4d2e;
+    width: 100%;
+    height: 100%;
     display: block;
+}
+
+/* ---------------------- */
+/* Overlay d'instructions */
+/* ---------------------- */
+#instructions {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.95);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 10;
+    padding: 20px;
+}
+
+#instructions h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #2a7f62;
+}
+
+#instructions p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+#instructions button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    background-color: #2a7f62;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#instructions button:hover {
+    background-color: #245c4e;
+}
+
+/* ---------------------- */
+/* Zone d'affichage des infos du champignon */
+/* ---------------------- */
+#mushroomInfo {
+    display: none; /* Caché par défaut */
+    margin-top: 20px;
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+/* Conteneur global de la fiche champignon */
+.mushroom-card {
+    position: relative;
+    background-color: #fff;
+    border: 2px solid #2e4d2e;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* En-tête : Titre + bouton comestible / non comestible */
+.mushroom-header {
+    margin-bottom: 15px;
+}
+
+.mushroom-title {
+    margin: 0 0 15px 0;
+    color: #2e4d2e;
+    font-size: 1.8em;
+    text-align: center;
+}
+
+/* Bouton indiquant si le champignon est comestible ou non */
+.mushroom-edible-btn {
+    background-color: #2a7f62;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: default;
+}
+
+/* Sous-titre (petite description) */
+.mushroom-subtitle {
+    margin-top: 10px;
+    font-size: 1.2em;
+    color: #666;
+    font-style: italic;
+}
+
+/* Image principale (même taille) */
+.main-photo {
+    width: 300px;  /* Largeur fixe */
+    height: 200px; /* Hauteur fixe */
+    object-fit: cover; /* Permet de remplir sans déformer */
+    display: block;
+    margin: 0 auto 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Liste de caractéristiques */
+.mushroom-details ul {
+    margin: 15px 0;
+    padding-left: 20px;
+    list-style-type: none;
+}
+
+.mushroom-details li {
+    margin-bottom: 8px;
+}
+
+.mushroom-longtext p {
+    margin-bottom: 15px;
 }
 
 /* ---------------------- */
@@ -163,5 +289,14 @@ footer {
     }
     .hero p {
         font-size: 1rem;
+    }
+
+    .mushroom-title {
+        font-size: 1.5em;
+    }
+
+    .main-photo {
+        width: 100%;
+        height: auto;
     }
 }
