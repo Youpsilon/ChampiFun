@@ -4,9 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Balade en Forêt des Champignons</title>
+    <!-- Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4C+XWJQ0kkigOth0WYfvPjB3+lrI0dJ0vRJjI/5+NkrhPqZBbKlB+EbkJ9gMy5yk5R+DQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Feuille de style principale -->
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
@@ -16,23 +17,19 @@
 
 <!-- Contenu principal -->
 <main id="accueil">
-    <!-- Section de présentation (hero) -->
+    <!-- Section Hero -->
     <section class="hero">
         <h1>Bienvenue à la Balade Champi</h1>
         <p>
-            Viens explorer la forêt enchantée où se cachent plein de champignons étonnants !
-            Découvre leurs secrets et apprends à les reconnaître en t'amusant.
+            Viens explorer la forêt enchantée où se cachent plein de champignons étonnants ! Découvre leurs secrets et apprends à les reconnaître en t'amusant.
         </p>
     </section>
 
-
-    <!-- Section d’informations textuelles -->
+    <!-- Section d'informations générales -->
     <section id="info-champignons">
         <h2>Pourquoi explorer la forêt des champignons ?</h2>
         <p>
-            Les champignons sont comme de petits trésors cachés dans la nature.
-            Certains sont délicieux, d'autres, à éviter. Ici, tu pourras apprendre à les identifier,
-            à comprendre leurs mystères et à profiter d'une aventure ludique en famille !
+            Les champignons sont de véritables trésors cachés dans la nature. Certains sont délicieux, d'autres à éviter. Ici, tu pourras apprendre à les identifier, comprendre leurs mystères et profiter d'une aventure ludique en famille !
         </p>
         <h3>Un monde fascinant à découvrir</h3>
         <p>
@@ -40,25 +37,23 @@
         </p>
     </section>
 
-    <!-- Section de consignes superposées au canvas -->
+    <!-- Section Modèle 3D et instructions -->
     <section id="modele3D">
         <h2>Explore la Forêt</h2>
         <div id="canvasContainer">
             <canvas id="renderCanvas"></canvas>
+            <!-- Overlay d'instructions -->
             <div id="instructions">
                 <h1>Prêt pour l'aventure ?</h1>
                 <p>
-                    Utilise ta souris pour te déplacer dans la forêt virtuelle et découvrir les champignons.
-                    Clique sur un champignon pour en savoir plus sur lui.
+                    Utilise ta souris pour te déplacer dans la forêt virtuelle et découvrir les champignons. Clique sur un champignon pour en savoir plus sur lui.
                 </p>
-                <button id="startButton">Je suis pret !</button>
+                <button id="startButton">Je suis prêt !</button>
             </div>
         </div>
         <!-- Zone d'affichage des infos du champignon -->
         <div id="mushroomInfo"></div>
     </section>
-
-
 </main>
 
 <!-- Pied de page -->
@@ -69,12 +64,10 @@
 <!-- Bibliothèques BabylonJS -->
 <script src="https://cdn.babylonjs.com/babylon.js"></script>
 <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
-
-
 <!-- Votre script personnalisé -->
 <script src="script.js"></script>
 <script>
-    // JS pour masquer l'overlay des consignes au clic sur le bouton
+    // Masquer l'overlay des consignes quand l'utilisateur clique sur le bouton
     document.getElementById("startButton").addEventListener("click", function() {
         document.getElementById("instructions").style.display = "none";
     });

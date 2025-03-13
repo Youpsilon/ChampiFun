@@ -13,7 +13,7 @@ body {
     background-color: #e9f3e9; /* Vert très pâle, ambiance nature */
     color: #333;
     line-height: 1.6;
-    overflow-x: hidden; /* Empêche le débordement horizontal */
+    overflow-x: hidden;
 }
 
 /* ---------------------- */
@@ -44,12 +44,20 @@ header nav a:hover {
 /* ---------------------- */
 /* Section Hero           */
 /* ---------------------- */
+/* ---------------------- */
+/* Section Hero           */
+/* ---------------------- */
 .hero {
-    position: relative;
-    padding: 4rem 1rem;
+    width: 100%;
+    padding: 6rem 2rem; /* Plus d'espace vertical et horizontal */
     text-align: center;
-    background: #e8f5e9;
-    color: #ffffff;
+    background-color: #e8f5e9; /* Fond vert clair */
+    color: #2a7f62;
+    position: relative;
+    /* Vous pouvez ajouter une image de fond si désiré, par exemple :
+    background: linear-gradient(rgba(232,245,233,0.9), rgba(232,245,233,0.9)), url('asset/images/foret-bg.jpg') no-repeat center center;
+    background-size: cover;
+    */
 }
 
 .hero::before {
@@ -59,7 +67,7 @@ header nav a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.3); /* Légère superposition pour un effet subtil */
     z-index: 1;
 }
 
@@ -69,19 +77,19 @@ header nav a:hover {
 }
 
 .hero h1 {
-    font-size: 3rem;
+    font-size: 3.5rem; /* Un peu plus grand pour attirer l'attention */
     margin-bottom: 1rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
     color: #2a7f62;
 }
 
 .hero p {
-    max-width: 700px;
+    max-width: 900px; /* Permet à la phrase de s'étendre sur une largeur plus importante */
     margin: 0 auto 2rem;
-    font-size: 1.2rem;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    font-size: 1.3rem;
     color: #333;
 }
+
 
 .btn-primary {
     padding: 0.75rem 1.5rem;
@@ -103,7 +111,6 @@ header nav a:hover {
 /* ---------------------- */
 main section {
     padding: 3rem 1rem;
-    max-width: 1000px;
     margin: 0 auto;
 }
 
@@ -113,6 +120,7 @@ main section {
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     padding: 2rem;
+    max-width: 1000px;
 }
 
 #info-champignons h2,
@@ -203,9 +211,8 @@ main section {
     margin: 20px auto;
 }
 
-/* Conteneur global de la fiche champignon */
+/* Fiche d'information du champignon */
 .mushroom-card {
-    position: relative;
     background-color: #fff;
     border: 2px solid #2e4d2e;
     border-radius: 8px;
@@ -213,19 +220,33 @@ main section {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* En-tête : Titre + bouton comestible / non comestible */
+.mushroom-info-container {
+    position: relative;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.main-photo {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* En-tête de la fiche */
 .mushroom-header {
     margin-bottom: 15px;
 }
 
 .mushroom-title {
-    margin: 0 0 15px 0;
-    color: #2e4d2e;
     font-size: 1.8em;
-    text-align: center;
+    color: #2e4d2e;
+    margin: 0 0 20px 0;
 }
 
-/* Bouton indiquant si le champignon est comestible ou non */
 .mushroom-edible-btn {
     background-color: #2a7f62;
     color: #fff;
@@ -233,33 +254,21 @@ main section {
     padding: 8px 16px;
     border-radius: 5px;
     font-size: 1em;
-    cursor: default;
 }
 
-/* Sous-titre (petite description) */
+/* Sous-titre */
 .mushroom-subtitle {
-    margin-top: 10px;
     font-size: 1.2em;
     color: #666;
     font-style: italic;
+    margin-top: 10px;
 }
 
-/* Image principale (même taille) */
-.main-photo {
-    width: 300px;  /* Largeur fixe */
-    height: 200px; /* Hauteur fixe */
-    object-fit: cover; /* Permet de remplir sans déformer */
-    display: block;
-    margin: 0 auto 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-/* Liste de caractéristiques */
+/* Caractéristiques et long texte */
 .mushroom-details ul {
+    list-style: none;
     margin: 15px 0;
     padding-left: 20px;
-    list-style-type: none;
 }
 
 .mushroom-details li {
@@ -290,11 +299,9 @@ footer {
     .hero p {
         font-size: 1rem;
     }
-
     .mushroom-title {
         font-size: 1.5em;
     }
-
     .main-photo {
         width: 100%;
         height: auto;
