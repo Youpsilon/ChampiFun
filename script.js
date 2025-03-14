@@ -1,8 +1,6 @@
 // script.js
 window.addEventListener('DOMContentLoaded', () => {
 
-
-
     // Données pour chaque type de champignon
     // Données pour chaque type de champignon
     const mushroomData = {
@@ -63,7 +61,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 <li><strong>Pied :</strong> Long et fin.</li>
                 <li><strong>Habitat :</strong> Forêt de résineux.</li>
                 <li><strong>Saison :</strong> Printemps.</li>
-                <li><strong>Edible :</strong> Comestible.</li>
+                <li><strong>Comestibilité :</strong> Comestible.</li>
             </ul>
         `,
             edibleIcon: "fa-solid fa-circle-check", // icône Font Awesome
@@ -126,7 +124,7 @@ window.addEventListener('DOMContentLoaded', () => {
       <li><strong>Spore Print :</strong> Brun clair à doré.</li>
       <li><strong>Habitat :</strong> Sols riches en humus, sous feuillus et conifères.</li>
       <li><strong>Saison :</strong> Été et automne.</li>
-      <li><strong>Edible :</strong> Comestible.</li>
+      <li><strong>Comestibilité :</strong> Comestible.</li>
     </ul>
   `,
             edibleIcon: "fa-solid fa-circle-check",  // Icône Font Awesome pour "comestible"
@@ -154,7 +152,7 @@ window.addEventListener('DOMContentLoaded', () => {
       <li><strong>Spore Print :</strong> Jaune pâle.</li>
       <li><strong>Habitat :</strong> Forêts avec des sols bien drainés.</li>
       <li><strong>Saison :</strong> Fin d'été et automne.</li>
-      <li><strong>Edible :</strong> Non comestible.</li>
+      <li><strong>Comestibilité :</strong> Non comestible.</li>
     </ul>
   `,
             edibleIcon: "fa-solid fa-circle-xmark",  // Icône Font Awesome pour "non comestible"
@@ -182,7 +180,7 @@ window.addEventListener('DOMContentLoaded', () => {
         <li><strong>Spore Print :</strong> Brun.</li>
         <li><strong>Habitat :</strong> Forêts mixtes et zones humides.</li>
         <li><strong>Saison :</strong> Été à automne.</li>
-        <li><strong>Edible :</strong> Comestible et très apprécié en cuisine.</li>
+        <li><strong>Comestibilité :</strong> Comestible et très apprécié en cuisine.</li>
       </ul>
     `,
             edibleIcon: "fa-solid fa-circle-check", // Icône Font Awesome pour comestible
@@ -210,7 +208,7 @@ window.addEventListener('DOMContentLoaded', () => {
         <li><strong>Spore Print :</strong> Blanc à crème.</li>
         <li><strong>Habitat :</strong> Forêts méditerranéennes et tempérées, souvent sous chênes et pins.</li>
         <li><strong>Saison :</strong> Printemps à début d'été.</li>
-        <li><strong>Edible :</strong> Comestible, très apprécié en gastronomie.</li>
+        <li><strong>Comestibilité :</strong> Comestible, très apprécié en gastronomie.</li>
       </ul>
     `,
             edibleIcon: "fa-solid fa-circle-check", // Icône pour comestible
@@ -238,7 +236,7 @@ window.addEventListener('DOMContentLoaded', () => {
         <li><strong>Spore Print :</strong> Blanc.</li>
         <li><strong>Habitat :</strong> Cultivé, mais pousse également à l'état sauvage en milieux humides.</li>
         <li><strong>Saison :</strong> Toute l'année en culture, principalement en automne à l'état sauvage.</li>
-        <li><strong>Edible :</strong> Très comestible.</li>
+        <li><strong>Comestibilité :</strong> Très comestible.</li>
       </ul>
     `,
             edibleIcon: "fa-solid fa-circle-check",
@@ -264,7 +262,7 @@ window.addEventListener('DOMContentLoaded', () => {
         <li><strong>Spore Print :</strong> Brun clair.</li>
         <li><strong>Habitat :</strong> Forêts de chênes.</li>
         <li><strong>Saison :</strong> Automne.</li>
-        <li><strong>Edible :</strong> Comestible.</li>
+        <li><strong>Comestibilité :</strong> Comestible.</li>
       </ul>
     `,
             edibleIcon: "fa-solid fa-circle-check",
@@ -290,7 +288,7 @@ window.addEventListener('DOMContentLoaded', () => {
         <li><strong>Pied :</strong> Fin et fragile.</li>
         <li><strong>Habitat :</strong> Milieux humides et ombragés.</li>
         <li><strong>Saison :</strong> Printemps.</li>
-        <li><strong>Edible :</strong> Non comestible.</li>
+        <li><strong>Comestibilité :</strong> Non comestible.</li>
       </ul>
     `,
             edibleIcon: "fa-solid fa-circle-xmark",
@@ -316,7 +314,7 @@ window.addEventListener('DOMContentLoaded', () => {
         <li><strong>Pied :</strong> Court et discret.</li>
         <li><strong>Habitat :</strong> Sur bois en décomposition dans les forêts humides.</li>
         <li><strong>Saison :</strong> Automne.</li>
-        <li><strong>Edible :</strong> Comestible, à consommer avec précaution.</li>
+        <li><strong>Comestibilité :</strong> Comestible, à consommer avec précaution.</li>
       </ul>
     `,
             edibleIcon: "fa-solid fa-circle-check",
@@ -342,7 +340,7 @@ window.addEventListener('DOMContentLoaded', () => {
         <li><strong>Pied :</strong> Fin et discret.</li>
         <li><strong>Habitat :</strong> Forêts humides, automne.</li>
         <li><strong>Saison :</strong> Automne.</li>
-        <li><strong>Edible :</strong> Comestible, et recherché en cuisine.</li>
+        <li><strong>Comestibilité :</strong> Comestible, et recherché en cuisine.</li>
       </ul>
     `,
             edibleIcon: "fa-solid fa-circle-check",
@@ -368,7 +366,7 @@ window.addEventListener('DOMContentLoaded', () => {
         <li><strong>Pied :</strong> Épais et robuste.</li>
         <li><strong>Habitat :</strong> Cultivé en cave et en plein air.</li>
         <li><strong>Saison :</strong> Automne.</li>
-        <li><strong>Edible :</strong> Très comestible.</li>
+        <li><strong>Comestibilité :</strong> Très comestible.</li>
       </ul>
     `,
             edibleIcon: "fa-solid fa-circle-check",
