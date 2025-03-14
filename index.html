@@ -23,6 +23,7 @@
         <p>
             Viens explorer la forêt enchantée où se cachent plein de champignons étonnants ! Découvre leurs secrets et apprends à les reconnaître en t'amusant.
         </p>
+        <a href="#info-champignons" class="scroll-btn" id="scrollToInfo">Découvrir la forêt</a>
     </section>
 
     <!-- Section d'informations générales -->
@@ -70,6 +71,17 @@
     // Masquer l'overlay des consignes quand l'utilisateur clique sur le bouton
     document.getElementById("startButton").addEventListener("click", function() {
         document.getElementById("instructions").style.display = "none";
+    });
+
+    document.getElementById("scrollToInfo").addEventListener("click", function(event) {
+        event.preventDefault(); // Empêche l'ancre par défaut
+
+        const target = document.getElementById("info-champignons");
+
+        target.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
     });
 </script>
 </body>

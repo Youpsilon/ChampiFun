@@ -17,31 +17,6 @@ body {
 }
 
 /* ---------------------- */
-/* Header et Navigation   */
-/* ---------------------- */
-header {
-    background-color: #2e4d2e; /* Vert forêt profond */
-    padding: 1rem;
-}
-
-header nav {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-}
-
-header nav a {
-    color: #cfe9c3; /* Vert clair */
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
-
-header nav a:hover {
-    color: #ffffff;
-}
-
-/* ---------------------- */
 /* Section Hero           */
 /* ---------------------- */
 /* ---------------------- */
@@ -49,15 +24,29 @@ header nav a:hover {
 /* ---------------------- */
 .hero {
     width: 100%;
-    padding: 6rem 2rem; /* Plus d'espace vertical et horizontal */
+    height: 100vh; /* Prend toute la hauteur de l'écran */
+    padding: 0 2rem; /* Enlève le padding vertical pour éviter le débordement */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centre verticalement */
+    align-items: center; /* Centre horizontalement */
     text-align: center;
     background-color: #e8f5e9; /* Fond vert clair */
     color: #2a7f62;
     position: relative;
-    /* Vous pouvez ajouter une image de fond si désiré, par exemple :
-    background: linear-gradient(rgba(232,245,233,0.9), rgba(232,245,233,0.9)), url('asset/images/foret-bg.jpg') no-repeat center center;
-    background-size: cover;
-    */
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    color: #43b58a;
+}
+
+.hero p {
+    max-width: 900px;
+    font-size: 1.3rem;
+    color: #ffffff;
 }
 
 .hero::before {
@@ -67,7 +56,9 @@ header nav a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.3); /* Légère superposition pour un effet subtil */
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url('./asset/images/champi_fond.jpg') no-repeat center center;
+    background-size: cover;
     z-index: 1;
 }
 
@@ -76,19 +67,6 @@ header nav a:hover {
     z-index: 2;
 }
 
-.hero h1 {
-    font-size: 3.5rem; /* Un peu plus grand pour attirer l'attention */
-    margin-bottom: 1rem;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
-    color: #2a7f62;
-}
-
-.hero p {
-    max-width: 900px; /* Permet à la phrase de s'étendre sur une largeur plus importante */
-    margin: 0 auto 2rem;
-    font-size: 1.3rem;
-    color: #333;
-}
 
 
 .btn-primary {
@@ -110,17 +88,18 @@ header nav a:hover {
 /* Sections d'information */
 /* ---------------------- */
 main section {
-    padding: 3rem 1rem;
+    padding: 2rem 1rem;
     margin: 0 auto;
 }
 
 #info-champignons {
     background-color: #f4f9f4;
-    margin: 2rem auto;
+    margin: 2rem auto auto auto;
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     padding: 2rem;
     max-width: 1000px;
+    scroll-margin-top: 2rem;
 }
 
 #info-champignons h2,
@@ -143,10 +122,10 @@ main section {
 #canvasContainer {
     position: relative;
     width: 90%;
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
     border: 2px solid #2e4d2e;
-    height: 500px;
+    height: auto;
 }
 
 #renderCanvas {
@@ -206,9 +185,8 @@ main section {
 /* ---------------------- */
 #mushroomInfo {
     display: none; /* Caché par défaut */
-    margin-top: 20px;
     max-width: 800px;
-    margin: 20px auto;
+    margin: 20px auto auto auto;
 }
 
 /* Fiche d'information du champignon */
@@ -222,7 +200,7 @@ main section {
 
 .mushroom-info-container {
     position: relative;
-    text-align: center;
+    text-align: left;
     margin-bottom: 15px;
 }
 
@@ -264,11 +242,17 @@ main section {
     margin-top: 10px;
 }
 
+.mushroom-details {
+    display: flex;
+    justify-content: center;
+}
+
 /* Caractéristiques et long texte */
 .mushroom-details ul {
     list-style: none;
     margin: 15px 0;
     padding-left: 20px;
+    text-align: left;
 }
 
 .mushroom-details li {
@@ -306,4 +290,20 @@ footer {
         width: 100%;
         height: auto;
     }
+}
+
+.scroll-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 24px;
+    background-color: #2a7f62; /* Vert foncé */
+    color: white;
+    font-size: 1.2rem;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.scroll-btn:hover {
+    background-color: #1e5b47; /* Vert plus foncé au hover */
 }
