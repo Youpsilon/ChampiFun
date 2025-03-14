@@ -458,9 +458,9 @@ window.addEventListener('DOMContentLoaded', () => {
 // Pour éviter que la caméra ne descende sous le sol, on limite l'angle vertical (beta)
 // Ici, beta représente l'angle entre la ligne reliant le pivot et la caméra et l'horizontale.
 // On fixe une limite inférieure (par exemple 0.1 rad) pour éviter que la caméra ne passe sous le pivot.
-        camera.lowerBetaLimit = 0.2;  // La caméra ne peut pas descendre en dessous d'environ 6° au-dessus de l'horizontale
+        camera.lowerBetaLimit =  Math.PI / 6 -0.3;  // La caméra ne peut pas descendre en dessous d'environ 6° au-dessus de l'horizontale
 // Optionnel : Limiter l'angle supérieur si nécessaire
-        camera.upperBetaLimit = Math.PI / 2; // La caméra ne peut pas dépasser la vue de dessus
+        camera.upperBetaLimit = Math.PI / 1.5 -0.7; // La caméra ne peut pas dépasser la vue de dessus
 
         // Réduire la sensibilité du zoom avec la molette
         camera.wheelPrecision = 200;
