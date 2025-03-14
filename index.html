@@ -23,6 +23,7 @@
         <p>
             Viens explorer la forêt enchantée où se cachent plein de champignons étonnants ! Découvre leurs secrets et apprends à les reconnaître en t'amusant.
         </p>
+
     </section>
 
     <!-- Section d'informations générales -->
@@ -40,6 +41,13 @@
     <!-- Section Modèle 3D et instructions -->
     <section id="modele3D">
         <h2>Explore la Forêt</h2>
+
+        <!-- Loader overlay -->
+        <div id="loaderOverlay">
+            <img src="asset/images/loader_mushroom.png" alt="Chargement...">
+        </div>
+
+
         <div id="canvasContainer">
             <canvas id="renderCanvas"></canvas>
             <!-- Overlay d'instructions -->
@@ -51,6 +59,17 @@
                 <button id="startButton">Je suis prêt !</button>
             </div>
         </div>
+
+        <!-- Zone de navigation unique avec flèches et nom du champignon -->
+        <div id="mushroomNavigation">
+            <button id="prevBtn">&larr;</button>
+            <span id="currentMushroomType"></span>
+            <button id="nextBtn">&rarr;</button>
+        </div>
+
+
+
+
         <!-- Zone d'affichage des infos du champignon -->
         <div id="mushroomInfo"></div>
     </section>

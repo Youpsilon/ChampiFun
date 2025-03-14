@@ -391,72 +391,83 @@ window.addEventListener('DOMContentLoaded', () => {
     // Initialisation du moteur BabylonJS
     const engine = new BABYLON.Engine(canvas, true);
     let scene;
+    let camera; // Déclarée en global
+
+    const mushroomGroups = {}; // Objet pour stocker les positions par type de champignon
 
     // Fonction de création de la scène
     const createScene = () => {
         // Création d'une scène
         const scene = new BABYLON.Scene(engine);
 
-        // Création d'une caméra ArcRotate (vue orbitale)
-        // const camera = new BABYLON.ArcRotateCamera(
-        //     "camera",
-        //     -Math.PI / 2,   // angle horizontal
-        //     Math.PI / 2.5,  // angle vertical
-        //     5,              // distance du centre
-        //     BABYLON.Vector3.Zero(),
-        //     scene
-        // );
-        // camera.attachControl(canvas, true);
-        //
-        // // Limiter la distance de la caméra (zoom)
-        // camera.lowerRadiusLimit = 3;
-        // camera.upperRadiusLimit = 20;
-        //
-        // // Limiter l'angle vertical (éviter de passer sous la scène)
-        // camera.lowerBetaLimit = Math.PI / 6 - 0.3;
-        // camera.upperBetaLimit = Math.PI / 1.5 - 0.7;
-        //
-        // camera.wheelPrecision = 50;
 
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        const camera = new BABYLON.UniversalCamera(
+//         const camera = new BABYLON.UniversalCamera(
+//             "camera",
+//             new BABYLON.Vector3(0, 1, -5), // Position de départ
+//             scene
+//         );
+//         camera.attachControl(canvas, true);
+//
+// // Paramètres pour un mouvement plus fluide
+//         camera.speed = 0.2; // Réduit la vitesse du déplacement
+//         camera.angularSensibility = 5000; // Réduit la sensibilité de la souris
+//
+// // Active les touches pour se déplacer (ZQSD ou WASD)
+//         camera.keysUp = [90]; // Z (AZERTY) ou W (QWERTY)
+//         camera.keysDown = [83]; // S
+//         camera.keysLeft = [81]; // Q (AZERTY) ou A (QWERTY)
+//         camera.keysRight = [68]; // D
+//
+//         scene.onKeyboardObservable.add((kbInfo) => {
+//             switch (kbInfo.type) {
+//                 case BABYLON.KeyboardEventTypes.KEYDOWN:
+//                     if (kbInfo.event.key === "e") {
+//                         camera.position.y += 0.2; // Monter
+//                     } else if (kbInfo.event.key === "a") {
+//                         camera.position.y -= 0.2; // Descendre
+//                     }
+//                     break;
+//             }
+//         });
+//
+//         camera.minZ = 0.1
+//
+//         scene.onPointerUp = function(p,pick){
+//             if(pick.hit){
+//                 console.log(pick.pickedPoint.x+', '+pick.pickedPoint.y+', '+pick.pickedPoint.z)
+//             }
+//         }
+
+        // Création de la caméra ArcRotate avec zoom de départ maximal (très proche du pivot)
+        camera = new BABYLON.ArcRotateCamera(
             "camera",
-            new BABYLON.Vector3(0, 1, -5), // Position de départ
+            -Math.PI / 2,          // Angle horizontal (alpha)
+            Math.PI / 4,           // Angle vertical initial (beta) à 45°
+            2.5,                   // Rayon initial (distance par rapport au pivot)
+            BABYLON.Vector3.Zero(),// Pivot initial (sera mis à jour ensuite)
             scene
         );
         camera.attachControl(canvas, true);
 
-// Paramètres pour un mouvement plus fluide
-        camera.speed = 0.2; // Réduit la vitesse du déplacement
-        camera.angularSensibility = 5000; // Réduit la sensibilité de la souris
 
-// Active les touches pour se déplacer (ZQSD ou WASD)
-        camera.keysUp = [90]; // Z (AZERTY) ou W (QWERTY)
-        camera.keysDown = [83]; // S
-        camera.keysLeft = [81]; // Q (AZERTY) ou A (QWERTY)
-        camera.keysRight = [68]; // D
+// Autoriser un zoom encore plus rapproché en fixant une limite inférieure plus basse
+        camera.lowerRadiusLimit = 2;  // L'utilisateur pourra zoomer jusqu'à une distance de 1
+        camera.upperRadiusLimit = 5; // Distance maximale de zoom
 
-        scene.onKeyboardObservable.add((kbInfo) => {
-            switch (kbInfo.type) {
-                case BABYLON.KeyboardEventTypes.KEYDOWN:
-                    if (kbInfo.event.key === "e") {
-                        camera.position.y += 0.2; // Monter
-                    } else if (kbInfo.event.key === "a") {
-                        camera.position.y -= 0.2; // Descendre
-                    }
-                    break;
-            }
-        });
+// Pour éviter que la caméra ne descende sous le sol, on limite l'angle vertical (beta)
+// Ici, beta représente l'angle entre la ligne reliant le pivot et la caméra et l'horizontale.
+// On fixe une limite inférieure (par exemple 0.1 rad) pour éviter que la caméra ne passe sous le pivot.
+        camera.lowerBetaLimit = 0.2;  // La caméra ne peut pas descendre en dessous d'environ 6° au-dessus de l'horizontale
+// Optionnel : Limiter l'angle supérieur si nécessaire
+        camera.upperBetaLimit = Math.PI / 2; // La caméra ne peut pas dépasser la vue de dessus
 
-        camera.minZ = 0.1
+        // Réduire la sensibilité du zoom avec la molette
+        camera.wheelPrecision = 200;
 
-        scene.onPointerUp = function(p,pick){
-            if(pick.hit){
-                console.log(pick.pickedPoint.x+', '+pick.pickedPoint.y+', '+pick.pickedPoint.z)
-            }
-        }
+
 
         /////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -572,6 +583,12 @@ window.addEventListener('DOMContentLoaded', () => {
                     parent.position = position;
                     parent.rotation = rotation;
                     parent.scaling = scaling;
+
+                    if (!mushroomGroups[name]) {
+                        mushroomGroups[name] = [];
+                    }
+                    mushroomGroups[name].push(parent.position);
+
 
                     // Parcourir les sous-meshes importés
                     meshes.forEach(mesh => {
@@ -1010,9 +1027,86 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // Création de la scène
     scene = createScene();
+
+
+    scene.executeWhenReady(() => {
+        // Masquer le loader lorsque la scène est prête
+        const loader = document.getElementById("loaderOverlay");
+        if (loader) {
+            loader.style.display = "none";
+        }
+
+        // (Optionnel) Vous pouvez aussi centrer la caméra sur le groupe de champignons ici...
+        const mushroomTypes = Object.keys(mushroomData);
+        let currentIndex = 1; // Par exemple, index 1
+        const currentMushroomTypeSpan = document.getElementById("currentMushroomType");
+        if (mushroomTypes.length > 0) {
+            const type = mushroomTypes[currentIndex];
+            camera.target = getPivotForType(type);
+            camera.beta = Math.PI / 3; // 45° de vertical
+            if (currentMushroomTypeSpan) {
+                currentMushroomTypeSpan.innerText = type;
+            }
+        }
+    });
+
+
+
+
+
+    function getPivotForType(type) {
+        const positions = mushroomGroups[type];
+        if (!positions || positions.length === 0) {
+            return BABYLON.Vector3.Zero();
+        }
+        // Somme des positions
+        let sum = positions.reduce((acc, pos) => acc.add(pos), BABYLON.Vector3.Zero());
+        return sum.scale(1 / positions.length);
+    }
+
+
+
     engine.runRenderLoop(() => {
         scene.render();
     });
+
+    // Récupération des types depuis mushroomData
+    const mushroomTypes = Object.keys(mushroomData);
+
+// Variable pour suivre l'indice courant
+    let currentIndex = 1;
+
+// Mettre à jour l'affichage du nom du champignon courant (si vous utilisez la navigation unique)
+    const currentMushroomTypeSpan = document.getElementById("currentMushroomType");
+
+// Si au moins un type existe, centrer la caméra sur le groupe correspondant
+    if (mushroomTypes.length > 0) {
+        // Centrer la caméra sur le groupe du premier type
+        camera.target = getPivotForType(mushroomTypes[currentIndex]);
+        // Mettre à jour l'affichage du nom
+        currentMushroomTypeSpan.innerText = mushroomTypes[currentIndex];
+    }
+
+
+    document.getElementById("prevBtn").addEventListener("click", () => {
+        currentIndex = (currentIndex - 1 + mushroomTypes.length) % mushroomTypes.length;
+        const type = mushroomTypes[currentIndex];
+        camera.target = getPivotForType(type);
+        camera.beta = Math.PI / 3; // Réinitialiser l'angle vertical à 45°
+        currentMushroomTypeSpan.innerText = type;
+    });
+
+    document.getElementById("nextBtn").addEventListener("click", () => {
+        currentIndex = (currentIndex + 1) % mushroomTypes.length;
+        const type = mushroomTypes[currentIndex];
+        camera.target = getPivotForType(type);
+        camera.beta = Math.PI / 3; // Réinitialiser l'angle vertical à 45°
+        currentMushroomTypeSpan.innerText = type;
+    });
+
+
+
+
     window.addEventListener("resize", () => {
         engine.resize();
     });
