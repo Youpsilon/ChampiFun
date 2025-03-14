@@ -690,7 +690,7 @@ window.addEventListener('DOMContentLoaded', () => {
         });
 
         loadMushroom("amanite.glb", {
-            name: "amanite",
+            name: "Amanite tue-mouche",
             position: new BABYLON.Vector3(13.44128992095424, 0.03, -0.1872537941000556),
             rotation: new BABYLON.Vector3(-3* Math.PI / 6, 0, 0),
             scaling: new BABYLON.Vector3(8, 8, 8)
@@ -876,7 +876,7 @@ window.addEventListener('DOMContentLoaded', () => {
             scaling: new BABYLON.Vector3(2.8, 2.8, 2.8)
         });
 
-        // Lapiote déguenillée -----------------------------------------------------------------------------------------
+        // Lépiote déguenillée -----------------------------------------------------------------------------------------
 
         loadMushroom("lapiote-deguenille.glb", {
             name: "Lépiote déguenillée",
